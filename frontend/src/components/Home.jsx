@@ -65,7 +65,7 @@ function Home() {
 
               if (maskresponse.ok) {
                 const data = await maskresponse.json(); // Parse JSON response
-                setIsLoaded(true);
+                
                 setExtractedData(data.processed_json);
                 const byteCharacters = atob(data.masked_pdf_path); // Decode base64
                 const byteNumbers = new Array(byteCharacters.length);
@@ -90,6 +90,7 @@ function Home() {
                     const newblob = await newresponse.blob();
                     const maskedImage = URL.createObjectURL(newblob);
                     setMaskedImage(maskedImage);
+                    setIsLoaded(true);
                   }
                   console.log("Extracted Data:", data.processed_json);
                 } catch (err) {
@@ -119,14 +120,14 @@ function Home() {
 
           if (response.ok) {
             const data = await response.json(); // Parse JSON response
-            setIsLoaded(true);
-
+            
             // Set extracted JSON data
             setExtractedData(data.processed_json);
-
+            
             // Convert Base64 to a displayable image URL
             const imageURL = `data:image/png;base64,${data.masked_image}`;
             setMaskedImage(imageURL);
+            setIsLoaded(true);
 
             console.log("Extracted Data:", data.processed_json);
           } else {

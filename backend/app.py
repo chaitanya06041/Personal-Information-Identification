@@ -23,6 +23,8 @@ os.makedirs(MASKED_FOLDER, exist_ok=True)
 
 @app.route('/mask-image', methods=['POST'])
 def mask_image_endpoint():
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    os.makedirs(MASKED_FOLDER, exist_ok=True)
     print("Received Request")
     if 'image' not in request.files:
         return {"error": "No image file uploaded"}, 400
