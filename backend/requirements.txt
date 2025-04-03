@@ -1,0 +1,17 @@
+numpy
+opencv-python
+pillow
+scikit-image
+deskew
+easyocr
+torch
+torchvision
+spacy
+nltk
+google-generativeai
+python-dotenv
+flask
+flask-cors
+pdf2image
+PyMuPDF
+pytesseract
