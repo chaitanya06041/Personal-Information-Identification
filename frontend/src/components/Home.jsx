@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css";
+import ExtractedData from "./ExtractedData";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -32,6 +33,7 @@ function Home() {
     if (file) {
       setIsLoaded(false);
       setFileType(file.type);
+      setExtractedData(null);
       const previewURL = URL.createObjectURL(file);
       setFilePreview(previewURL);
 
@@ -45,12 +47,17 @@ function Home() {
         });
 
         if (response.ok) {
-          // Get the image blob and create an image URL
-          const blob = await response.blob();
-          const imageURL = URL.createObjectURL(blob);
+          const data = await response.json(); // Parse JSON response
           setIsLoaded(true);
+  
+          // Set extracted JSON data
+          setExtractedData(data.processed_json);
+  
+          // Convert Base64 to a displayable image URL
+          const imageURL = `data:image/png;base64,${data.masked_image}`;
           setMaskedImage(imageURL);
-          console.log(imageURL);
+  
+          console.log("Extracted Data:", data.processed_json);
         } else {
           console.error("Error uploading image");
         }
@@ -133,6 +140,7 @@ function Home() {
             </div>
           </div>
         )}
+        {extractedData && <ExtractedData data={extractedData}/>}
       </div>
     </div>
   );
