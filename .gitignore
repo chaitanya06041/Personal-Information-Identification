@@ -1,2 +1,6 @@
 node_modules
 venv
+uploads
+output_images
+masked
+temp_images
