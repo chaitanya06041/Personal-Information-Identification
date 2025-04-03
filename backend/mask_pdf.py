@@ -44,8 +44,12 @@ def mask_pdf_data(pdf_path, result_json):
         page.apply_redactions()
 
     # Save the redacted PDF
+    dir_name = os.path.dirname(pdf_path)  # Folder path
+    base_name = os.path.basename(pdf_path)  # File name
+    masked_pdf_path = os.path.join('masked', f"masked_{base_name}")
     pdf_document.save(masked_pdf_path)
     pdf_document.close()
+    print(masked_pdf_path)
     return masked_pdf_path
 
 # Example usage
