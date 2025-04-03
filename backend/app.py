@@ -19,7 +19,6 @@ os.makedirs(MASKED_FOLDER, exist_ok=True)
 # masked_image_path = mask_image.get_masked_image(file_path, json_data)
 
 @app.route('/mask-image', methods=['POST'])
-@app.route('/mask-image', methods=['POST'])
 def mask_image_endpoint():
     print("Received Request")
     if 'image' not in request.files:
