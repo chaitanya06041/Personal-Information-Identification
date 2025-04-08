@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { OrbitProgress } from "react-loading-indicators";
+import downloadBtn from "../assets/download.png";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -28,6 +29,7 @@ function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [maskedImage, setMaskedImage] = useState(null);
   const [extractedData, setExtractedData] = useState(null);
+  const [maskedPDF, setMaskedPDF] = useState(null);
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
@@ -65,7 +67,7 @@ function Home() {
 
               if (maskresponse.ok) {
                 const data = await maskresponse.json(); // Parse JSON response
-                
+
                 setExtractedData(data.processed_json);
                 const byteCharacters = atob(data.masked_pdf_path); // Decode base64
                 const byteNumbers = new Array(byteCharacters.length);
@@ -76,6 +78,7 @@ function Home() {
                 const pdfBlob = new Blob([byteArray], {
                   type: "application/pdf",
                 });
+                setMaskedPDF(pdfBlob);
                 const newForm = new FormData();
                 newForm.append("pdf", pdfBlob, "masked.pdf");
                 try {
@@ -120,10 +123,10 @@ function Home() {
 
           if (response.ok) {
             const data = await response.json(); // Parse JSON response
-            
+
             // Set extracted JSON data
             setExtractedData(data.processed_json);
-            
+
             // Convert Base64 to a displayable image URL
             const imageURL = `data:image/png;base64,${data.masked_image}`;
             setMaskedImage(imageURL);
@@ -176,7 +179,32 @@ function Home() {
               </div>
             </div>
             <div className="masked_image">
-              <p>Masked Image</p>
+              <div className="first_row">
+                <p>Masked Image</p>
+                {isLoaded && maskedImage && (
+                  <div className="download_button">
+                    <a
+                      href={
+                        fileType === "application/pdf" ? URL.createObjectURL(maskedPDF) : maskedImage
+                      }
+                      download={
+                        fileType === "application/pdf"
+                          ? "masked.pdf"
+                          : "masked.png"
+                      }
+                    >
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        // endIcon={<span>⬇️</span>}
+                      >
+                        <img src={downloadBtn}></img>
+                      </Button>
+                    </a>
+                  </div>
+                )}
+              </div>
+
               <div className="image_container">
                 {!isLoaded && (
                   <OrbitProgress

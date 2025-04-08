@@ -21,7 +21,8 @@ def mask_pdf_data(pdf_path, result_json):
         result_json.get("phone_no", ""),
         result_json.get("address", ""),
         result_json.get("dob", ""),
-        result_json.get("expiry_date", "")
+        result_json.get("expiry_date", ""),
+        result_json.get("email", "")
     ]
     # Filter out empty values
     sensitive_info = [info for info in sensitive_info if info and info.strip()]

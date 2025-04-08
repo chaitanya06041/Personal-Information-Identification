@@ -4,7 +4,13 @@
 }
 
 .home .home_container {
-    margin-top: 15px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 50px;
 }
 
 .home .home_container .input_row {
@@ -20,6 +26,17 @@
     justify-content: center;
     gap: 25px;
     margin-top: 20px;
+}
+
+.home .home_container .file_previews .masked_image .first_row{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+}
+
+.home .home_container .file_previews .masked_image .first_row img{
+    width: 20px;
 }
 
 .home .home_container .file_previews .original_image,

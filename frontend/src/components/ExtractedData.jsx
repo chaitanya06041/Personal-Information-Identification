@@ -49,7 +49,7 @@ function ExtractedData({ data }) {
         <tbody>
           {Object.entries(extractedData || {}).map(([key, value]) => (
             <tr key={key}>
-              <td>{key}</td>
+              <td className="right_td">{key}</td>
               <td>{value || "N/A"}</td>
             </tr>
           ))}
