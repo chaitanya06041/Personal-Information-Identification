@@ -54,7 +54,7 @@ Built with **Flask** for the backend and **React** for the frontend, this projec
    python app.py
 
 3. Install the required Libraries for Frontend
-   start new terminal
+   - start new terminal
    ```bash
    cd Frontend
    npm install
