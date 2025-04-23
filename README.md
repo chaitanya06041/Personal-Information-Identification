@@ -1,28 +1,59 @@
-# 🔐 PII Detection System
+# Document Text Extraction and Masking
 
-A robust system for identifying **Personally Identifiable Information (PII)** from documents and datasets. This project ensures data privacy and regulatory compliance by automatically detecting and flagging sensitive information like names, emails, phone numbers, and more.
+This project extracts text from documents (PDFs or images), identifies key data points such as document type, ID, expiry date, person name, DOB, gender, address, country, mobile number, and email using Google Gemini API. The sensitive data is then masked for security and privacy.
 
----
-
-## 📌 Features
-
-- ✅ Detects common PII types: Names, Emails, Phone Numbers, SSNs, Credit Card Numbers
-- 🔍 Works with plain text, CSV, and PDF files
-- 🧠 Combines regex and spaCy NER for accurate detection
-- 📊 Outputs categorized results for easy analysis
-- 💻 Easy to extend with custom rules or ML models
+Built with **Flask** for the backend and **React** for the frontend, this project aims to automate the process of extracting and sanitizing sensitive information from documents.
 
 ---
 
-## 🚀 Tech Stack
+## Features
 
-- **Language**: Python  
-- **Libraries**: spaCy, pandas, PyPDF2, re
-- **PII Detection**:
-  - `regex_detector.py`: Uses regular expressions
-  - `spacy_ner_detector.py`: Uses spaCy's NER model
+- **Text extraction from PDFs and images**: Uses **EasyOCR** for image-based text extraction and **PyMuPDF (fitz)** for PDF-based text extraction.
+- **Key data extraction**: Uses **Google Gemini API** to detect specific data from the text (e.g., name, document ID, expiry date).
+- **Data masking**: Sensitive data like document ID, expiry date, address, phone number, email, and date of birth are automatically masked for privacy.
+- **Techniques used for image preprocessing**:
+  - Image rotation
+  - Grayscale conversion
+  - Monochrome conversion
+  - Thresholding (Mean and Gaussian)
+  - Deskewing
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
 
+- **Backend**: Flask (Python)
+- **Frontend**: React
+- **Text Extraction**: EasyOCR, PyMuPDF (fitz)
+- **Key Data Extraction**: Google Gemini API
+- **Text Masking**: EasyOCR for images, PyMuPDF (fitz) for PDFs
+
+---
+
+## Installation
+
+### Prerequisites
+
+- Python 3.7+
+- Node.js and npm (for frontend)
+- Google Gemini API key
+
+### Backend Setup (Flask)
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/chaitanya06041/Personal-Information-Identification.git
+   cd Personal-Information-Identification
+
+2. Install the required Libraries for Backend
+   cd Backend
+   python -m venv venv
+   cd venv/Scripts/activate
+   pip install -r requirements.txt
+   python app.py
+
+3. Install the required Libraries for Frontend
+   start new terminal
+   cd Frontend
+   npm install
+   npm run dev
