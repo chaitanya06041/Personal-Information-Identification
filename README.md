@@ -46,6 +46,7 @@ Built with **Flask** for the backend and **React** for the frontend, this projec
    cd Personal-Information-Identification
 
 2. Install the required Libraries for Backend
+   ```bash
    cd Backend
    python -m venv venv
    cd venv/Scripts/activate
@@ -54,6 +55,7 @@ Built with **Flask** for the backend and **React** for the frontend, this projec
 
 3. Install the required Libraries for Frontend
    start new terminal
+   ```bash
    cd Frontend
    npm install
    npm run dev
