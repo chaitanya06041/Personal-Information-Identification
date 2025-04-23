@@ -59,3 +59,9 @@ Built with **Flask** for the backend and **React** for the frontend, this projec
    cd Frontend
    npm install
    npm run dev
+
+
+
+### Testing Dataset: 
+To test text extraction use dataset available on Huggingface
+mychen76/invoices-and-receipts_ocr_v2
