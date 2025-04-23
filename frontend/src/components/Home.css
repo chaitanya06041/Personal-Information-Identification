@@ -49,6 +49,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    background-color: white;
 }
 
 .home .home_container .file_previews .image_container{

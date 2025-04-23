@@ -44,7 +44,7 @@ def get_formatted_text_info(text):
     - expiry_date
 
     Text: {text}
-
+    Remember that phone number is of 10 or 11 digits only.
     Return JSON with only these keys in lowercase. If not found, use empty string.
     """
     
